@@ -31,4 +31,22 @@ export class AppComponent implements OnInit {
       this.newTodo = new ToDo();
     })
   }
+
+  editTodo(todo: ToDo) {
+    console.log(todo)
+    if(this.todosList.includes(todo)){
+      if(!this.editTodos.includes(todo)){
+        this.editTodos.push(todo)
+      } else {
+        this.editTodos.splice(this.editTodos.indexOf(todo), 1)
+        this.todoService.editTodo(todo)
+        .subscribe(res => {
+          console.log('Update Successful')
+        }, err => {
+          this.editTodo(todo)
+          console.error('Update Unsuccessful')
+        })
+      }
+    }
+  }
 }
