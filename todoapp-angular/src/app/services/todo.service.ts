@@ -23,4 +23,19 @@ export class TodoService {
   createTodo(todo: ToDo): Observable<any>{
     return this.http.post(`${this.todoUrl}`, todo);
   }
+
+  editTodo(todo:ToDo){
+    let editUrl = `${this.todoUrl}`
+
+    return this.http.put(editUrl, todo);
+  }
+
+  deleteTodo(id: string):any{
+    let deleteUrl =  `${this.todoUrl}/${id}`
+
+    return this.http.delete(deleteUrl)
+    .map(res => {
+      return res;
+    })
+  }
 }
