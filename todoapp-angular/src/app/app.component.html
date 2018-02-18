@@ -61,7 +61,7 @@
           <input type="text" name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control">
         </div>
         <div class="col-md-2">
-          <button type="submit" class="btn btn-primary">Add</button>
+          <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
         </div>
       </div>
     </form>
