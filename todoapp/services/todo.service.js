@@ -32,4 +32,14 @@ exports.createTodo = async function(todo) {
   } catch(e) {
     throw Error("Error saving Todo");
   }
-}
+};
+
+exports.updateTodo = async function(todo) {
+  var id = todo.id;
+
+  try {
+    var existingTodo = await ToDo.findById(id);
+  } catch(e) {
+    throw Error("Error while finding the Todo item");
+  }
+};
