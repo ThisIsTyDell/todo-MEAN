@@ -60,4 +60,10 @@ export class AppComponent implements OnInit {
       console.error('Update Unsuccessful')
     })
   }
+
+  submitTodo(event, todo:ToDo) {
+    if(event.keyCode == 13) {
+      this.editTodo(todo)
+    }
+  }
 }
