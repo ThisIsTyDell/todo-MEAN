@@ -15,11 +15,11 @@
         </thead>
 
         <tbody>
-          <tr class="todo">
-            <td>title</td>
-            <td>description</td>
-            <td>date</td>
-            <td>status</td>
+          <tr class="todo" *ngFor="let todo of todosList">
+            <td>{{todo.title}}</td>
+            <td>{{todo.description}}</td>
+            <td>{{todo.date | date}}</td>
+            <td>{{todo.status}}</td>
             <td>
               <button class="btn btn-success">
                 Complete
@@ -52,4 +52,25 @@
   </div>
 
   <div class="col-md-2"></div>
+</div>
+
+<div class="row">
+  <div class="col-md-2"></div>
+
+  <div class="col-md-8">
+    <div class="todos">
+      <table class="table">
+        <thead class="h">
+          <tr class="h">
+            <th class="h">Title</th>
+            <th class="h">Description</th>
+            <th class="h">Date</th>
+            <th class="h">Status</th>
+            <th class="h">Options</th>
+          </tr>
+        </thead>
+        
+      </table>
+    </div>
+  </div>
 </div>
