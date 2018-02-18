@@ -16,3 +16,13 @@ exports.getTodos = async function(query, page, limit) {
     throw Error('Error while Paginating ToDos');
   }
 };
+
+exports.createTodo = async function(todo) {
+  var newTodo = new ToDo({
+    title: todo.title,
+    description: todo.description,
+    date: new Date();
+    status: todo.status
+  });
+
+}
