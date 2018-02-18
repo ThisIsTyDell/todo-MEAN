@@ -28,4 +28,19 @@ exports.createTodo = async function(req, res, next) {
     description: req.body.description,
     status: req.body.status
   };
+
+  try {
+    var createdTodo = await TodoService.createTodo(todo);
+
+    return res.status(201).json({
+      status: 201,
+      data: createdTodo,
+      message: "Successfully created ToDo"
+    });
+  } catch(e) {
+    return res.status(400).json({
+      status: 400,
+      message: "Was unable to create new todo item"
+    });
+  }
 };
