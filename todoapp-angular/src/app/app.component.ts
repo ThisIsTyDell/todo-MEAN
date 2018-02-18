@@ -52,7 +52,11 @@ export class AppComponent implements OnInit {
   }
 
   doneTodo(todo: ToDo) {
-    todo.status = 'Done'
+    if (todo.status == 'Done'){
+      todo.status = "Pending"
+    } else {
+      todo.status = 'Done'
+    }
     this.todoService.editTodo(todo)
     .subscribe(res => {
       console.log('Update Successful')
