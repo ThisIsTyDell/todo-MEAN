@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   public newTodo: ToDo = new ToDo()
 
   todosList: ToDo[];
+  editTodos: ToDo[] = [];
   title = 'app';
 
   ngOnInit(): void {
