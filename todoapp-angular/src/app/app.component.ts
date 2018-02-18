@@ -10,5 +10,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   constructor(private todoService: TodoService){}
+
+  public newTodo: ToDo = new ToDo()
   title = 'app';
 }
