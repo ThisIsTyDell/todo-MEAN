@@ -25,4 +25,11 @@ exports.createTodo = async function(todo) {
     status: todo.status
   });
 
+  try {
+    var savedTodo = await newTodo.save();
+
+    return savedTodo;
+  } catch(e) {
+    throw Error("Error saving Todo");
+  }
 }
