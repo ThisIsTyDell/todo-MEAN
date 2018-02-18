@@ -13,6 +13,13 @@ export class TodoService {
 
   constructor(private http: HttpClient) {}
 
+  getToDos(): Observable<ToDo[]>{
+    return this.http.get(this.todoUrl)
+    .map(res => {
+      return res["data"].docs as ToDo[];
+    })
+  }
+
   createTodo(todo: ToDo): Observable<any>{
     return this.http.post(`${this.todoUrl}`, todo);
   }
