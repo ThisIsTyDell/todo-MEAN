@@ -16,19 +16,35 @@
 
         <tbody>
           <tr class="todo" *ngFor="let todo of todosList">
-            <td>{{todo.title}}</td>
-            <td>{{todo.description}}</td>
-            <td>{{todo.date | date}}</td>
-            <td>{{todo.status}}</td>
+            <ng-container *ngIf="!editTodos.includes(todo); else editTD">
+              <td>{{todo.title}}</td>
+              <td>{{todo.description}}</td>
+              <td>{{todo.date | date}}</td>
+              <td>{{todo.status}}</td>
+            </ng-container>
+
+            <ng-template #editTD>
+              <td>
+                <input type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" class="form-control">
+              </td>
+              <td>
+                <input type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description" class="form-control">
+              </td>
+                <td>{{todo.date | date}}</td>
+              <td>
+                <input type="text" name="status" id="status" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.status" placeholder="Status" class="form-control">
+              </td>
+            </ng-template>
+
             <td>
               <button class="btn btn-success">
-                Complete
+                <i class="fa fa-check"></i>
               </button>
               <button class="btn btn-primary">
-                Edit
+                <i class="fa fa-pencil"></i>
               </button>
               <button class="btn btn-danger">
-                Delete
+                <i class="fa fa-trash"></i>
               </button>
             </td>
           </tr>
