@@ -49,4 +49,15 @@ export class AppComponent implements OnInit {
       }
     }
   }
+
+  doneTodo(todo: ToDo) {
+    todo.status = 'Done'
+    this.todoService.editTodo(todo)
+    .subscribe(res => {
+      console.log('Update Successful')
+    }, err => {
+      this.editTodo(todo)
+      console.error('Update Unsuccessful')
+    })
+  }
 }
