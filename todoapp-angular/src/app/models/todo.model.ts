@@ -9,7 +9,7 @@ class ToDo {
     this.title = "";
     this.description = "";
     this.date = new Date();
-    this.status = "";
+    this.status = "Pending";
   }
 }
 
