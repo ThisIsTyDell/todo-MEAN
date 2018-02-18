@@ -1,4 +1,4 @@
-var TodoService = require('../services/todos.service');
+var TodoService = require('../services/todo.service');
 
 _this = this;
 
