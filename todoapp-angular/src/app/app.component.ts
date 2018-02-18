@@ -12,9 +12,11 @@ export class AppComponent implements OnInit {
   constructor(private todoService: TodoService){}
 
   public newTodo: ToDo = new ToDo()
+
+  todosList: ToDo[];
   title = 'app';
 
   ngOnInit(): void {
-    
+
   }
 }
