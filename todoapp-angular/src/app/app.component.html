@@ -1,71 +1,89 @@
-<div class="row">
-  <div class="col-md-2"></div>
+<head>
 
-  <div class="col-md-8">
-    <div class="todos" *ngIf="todosList">
-      <table class="table">
-        <thead class="h">
-          <tr class="h">
-            <th class="h">Title</th>
-            <th class="h">Description</th>
-            <th class="h">Date</th>
-            <th class="h">Status</th>
-            <th class="h">Options</th>
-          </tr>
-        </thead>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
 
-        <tbody>
-          <tr class="todo" (dblclick)="editTodo(todo)" *ngFor="let todo of todosList">
-            <ng-container *ngIf="!editTodos.includes(todo); else editTD">
-              <td>{{todo.title}}</td>
-              <td>{{todo.description}}</td>
-              <td>{{todo.date | date}}</td>
-              <td>{{todo.status}}</td>
-            </ng-container>
+<body>
 
-            <ng-template #editTD>
-              <td>
-                <input type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" class="form-control">
-              </td>
-              <td>
-                <input type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description" class="form-control">
-              </td>
-                <td>{{todo.date | date}}</td>
-              <td>
-                <input type="text" name="status" id="status" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.status" placeholder="Status" class="form-control">
-              </td>
-            </ng-template>
+<h1>Daily Things</h1>
+<p>
+  An example MEAN To-Do application. (MongoDB, Express, AngularJS, and NodeJs)
+</p>
 
-            <td class="o">
-              <button class="btn btn-success" (click)="doneTodo(todo)">
-                <i class="fa fa-check"></i>
-              </button>
-              <button class="btn btn-primary" (click)="editTodo(todo)">
-                <i class="fa fa-pencil"></i>
-              </button>
-              <button class="btn btn-danger" (click)="deleteTodo(todo)">
-                <i class="fa fa-trash"></i>
-              </button>
+<main>
+  <div class="todos" *ngIf="todosList">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Date</th>
+          <th>Status</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th colspan='1'>
+            Add a New Task
+          </th>
+          <th><input type="text" name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title" class="form-control"></th>
+          <th colspan='2'><input type="text" name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control"></th>
+          <th><button type="submit" class="btn btn-primary button-wide" (click)="create()">Add</button></th>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr class="todo" (dblclick)="editTodo(todo)" *ngFor="let todo of todosList">
+          <ng-container *ngIf="!editTodos.includes(todo); else editTD">
+            <td>{{todo.title}}</td>
+            <td>{{todo.description}}</td>
+            <td>{{todo.date | date}}</td>
+            <td>{{todo.status}}</td>
+          </ng-container>
+
+          <ng-template #editTD>
+            <td>
+              <input type="text" name="title" id="title" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.title" placeholder="Title" class="form-control">
             </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+            <td>
+              <input type="text" name="description" id="description" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.description" placeholder="Description" class="form-control">
+            </td>
+              <td>{{todo.date | date}}</td>
+            <td>
+              <input type="text" name="status" id="status" (keypress)="submitTodo($event, todo)" [(ngModel)]="todo.status" placeholder="Status" class="form-control">
+            </td>
+          </ng-template>
 
-    <form>
-      <div class="form-row">
-        <div class="col-md-5">
-          <input type="text" name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title" class="form-control">
-        </div>
-        <div class="col-md-5">
-          <input type="text" name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control">
-        </div>
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
-        </div>
-      </div>
-    </form>
+          <td class="select">
+            <button class="btn btn-success" (click)="doneTodo(todo)">
+              <i class="fa fa-check"></i>
+            </button>
+            <button class="btn btn-primary" (click)="editTodo(todo)">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-danger" (click)="deleteTodo(todo)">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
+</main>
 
-  <div class="col-md-2"></div>
-</div>
+  <!--<form class="form-inline">
+    <div class="form-group">
+      <input type="text" name="title" id="title" [(ngModel)]="newTodo.title" placeholder="Title" class="form-control">
+    </div>
+    <div class="form-group">
+      <input type="text" name="description" id="description" [(ngModel)]="newTodo.description" placeholder="Description" class="form-control">
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+    </div>
+  </form>-->
+
+    
+
