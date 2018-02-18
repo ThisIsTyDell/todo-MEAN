@@ -1,4 +1,5 @@
-var TodoService = require('../services/todo.service');
+
+var TodoService = require('../services/todos.service');
 
 _this = this;
 
@@ -40,7 +41,7 @@ exports.createTodo = async function(req, res, next) {
   } catch(e) {
     return res.status(400).json({
       status: 400,
-      message: "Was unable to create new todo item"
+      message: "Was unable to create new todo item: " + e.message
     });
   }
 };
@@ -84,7 +85,7 @@ exports.removeTodo = async function(req, res, next) {
   var id = req.params.id;
 
   try {
-    var deleted = await TodoService.deleteTodo(id);
+    var deleted = await TodoService.deleteTodo(id)
 
     return res.status(204).json({
       status: 204,
