@@ -21,7 +21,7 @@ exports.createTodo = async function(todo) {
   var newTodo = new ToDo({
     title: todo.title,
     description: todo.description,
-    date: new Date();
+    date: new Date(),
     status: todo.status
   });
 
