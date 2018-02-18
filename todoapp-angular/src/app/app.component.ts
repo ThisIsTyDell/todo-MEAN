@@ -1,7 +1,7 @@
 import { Response } from '@angular/http';
 import { TodoService } from './services/todo.service';
 import ToDo from './models/todo.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +13,8 @@ export class AppComponent implements OnInit {
 
   public newTodo: ToDo = new ToDo()
   title = 'app';
+
+  ngOnInit(): void {
+    
+  }
 }
