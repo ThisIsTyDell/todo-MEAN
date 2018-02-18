@@ -9,7 +9,7 @@ var bluebird = require('bluebird');
 
 var mongoose = require('mongoose')
 mongoose.Promise = bluebird;
-mongoose.connect('mongodb://127.0.0.1:27017/todoapp', { useMongoClient: true })
+mongoose.connect('mongodb://127.0.0.1:27017/todoapp')
 .then(() => {console.log('Successfully Connected to the Mongodb Database at URL: mongodb://127.0.0.1:27017/todoapp')})
 .then(() => {console.log('Error Connecting to the Mongodb Database at URL: mongodb://127.0.0.1:27017/todoapp')});
 
