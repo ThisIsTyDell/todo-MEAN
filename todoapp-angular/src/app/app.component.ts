@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
   title = 'app';
 
   ngOnInit(): void {
-
+    this.todoService.getToDos()
+    .subscribe(todos => {
+      this.todosList = todos;
+      console.log(todos);
+    })
   }
 }
