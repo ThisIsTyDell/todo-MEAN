@@ -42,4 +42,19 @@ exports.updateTodo = async function(todo) {
   } catch(e) {
     throw Error("Error while finding the Todo item");
   }
+
+  if(!existingTodo) {
+    return false;
+  }
+
+  existingTodo.title = todo.title;
+  existingTodo.description = todo.description;
+  existingTodo.status = todo.status;
+
+  try {
+    var savedTodo = await existingTodo.save();
+    return savedTodo;
+  } catch(e) {
+    throw Error("Unable to update todo");
+  }
 };
