@@ -70,3 +70,15 @@ exports.deleteTodo = async function(id) {
     throw Error("Error while deleting the todo item");
   }
 };
+
+exports.deleteAll = async function() {
+  try {
+    var deletedTodoList = await ToDo.remove({})
+    if(deletedTodoList.result.n === 0){
+      throw Error("Todo List could not be deleted");
+    }
+    return deletedTodoList
+  } catch(e) {
+    throw Error(e);
+  }
+}

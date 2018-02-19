@@ -10,6 +10,7 @@ import 'rxjs/add/operator/map';
 export class TodoService {
   api_url = 'http://localhost:3000';
   todoUrl = `${this.api_url}/api/todos`;
+  //todoUrl = '/api/todos';
 
   constructor(private http: HttpClient) {}
 
@@ -37,6 +38,11 @@ export class TodoService {
     .map(res => {
       return res;
     })
+  }
+
+  deleteAll():any{
+    let deleteAllUrl = `${this.todoUrl}`
+    return this.http.delete(deleteAllUrl)
   }
 
   private handleError(error: any): Promise<any>{

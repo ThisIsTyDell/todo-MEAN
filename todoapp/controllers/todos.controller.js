@@ -98,3 +98,19 @@ exports.removeTodo = async function(req, res, next) {
     });
   }
 };
+
+exports.removeAll = async function(req, res, next) {
+  try {
+    var deletedAll = await TodoService.deleteAll()
+
+    return res.status(204).json({
+      status: 204,
+      message: "All Todo items deleted successfully"
+    });
+  } catch(e) {
+    return res.status(400).json({
+      status: 400,
+      message: e.message
+    });
+  }
+}

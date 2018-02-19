@@ -78,4 +78,15 @@ export class AppComponent implements OnInit {
       this.todosList.splice(this.todosList.indexOf(todo), 1);
     })
   }
+
+  deleteAll(){
+    if(confirm("Are you sure you want to delete all tasks?\nSelect Either OK or Cancel.")){
+      this.todoService.deleteAll()
+        .subscribe(res => {
+        this.todosList = []
+      })
+    } else {
+      console.log("dont delete")
+    }
+  }
 }
